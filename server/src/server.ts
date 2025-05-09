@@ -2,14 +2,18 @@ import express, { Request, Response } from "express";
 import authroute from "./routes/auth.route";
 import dotenv from "dotenv";
 dotenv.config();
+import { config } from "./types/config";
+
+import { connectDB } from "./lib/db";
 
 const app = express();
-const port = process.env.PORT || 3000;
+const PORT = config.PORT || 3000;
 
 app.use(express.json());
 
 app.use("/api/auth", authroute);
 
-app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
+app.listen(PORT, () => {
+  connectDB();
+  console.log(`Server running on http://localhost:${PORT}`);
 });

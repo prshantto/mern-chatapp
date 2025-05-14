@@ -2,7 +2,7 @@ import express, { Request, Response } from "express";
 import authroute from "./routes/auth.route";
 import dotenv from "dotenv";
 dotenv.config();
-import { config } from "./types/config";
+import { config } from "./config/env";
 
 import { connectDB } from "./lib/db";
 
